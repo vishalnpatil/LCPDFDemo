@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using PdfGenerator.Models;
 using Rotativa;
 using System.Globalization;
-using PdfGenerator.Helper;
+
 using System.Threading;
 
 namespace PdfGenerator.Controllers
