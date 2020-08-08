@@ -1,0 +1,106 @@
+﻿@using PdfGenerator.Models.Resx
+@model IEnumerable<PdfGenerator.Models.StudentLCData>
+
+@{
+    ViewBag.Title = "Student Leaving Certificate";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>*@
+
+
+<h2>@SchoolLC.ListofStudents</h2>
+
+<p>
+    @Html.ActionLink(PdfGenerator.Models.Resx.SchoolLC.CreateNew, "Create")
+</p>
+
+@if (Model.Count() == 0)
+{
+    <h3>No Records Found</h3>
+}
+else
+{
+<table class="table table-condensed table-hover">
+    <tr>
+        <th>
+         
+            @Html.DisplayNameFor(model => model.AdmissionNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nationality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotherTongue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Religion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Caste)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubCaste)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthPlace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOBInDigits)
+        </th>
+       
+        
+        
+        <th>@SchoolLC.Action</th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdmissionNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nationality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotherTongue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Religion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Caste)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubCaste)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthPlace)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOBInDigits)
+        </td>
+        
+        <td >
+            @Html.ActionLink(SchoolLC.Edit, "Edit", new { id = item.Id }) |
+            @Html.ActionLink(SchoolLC.Details, "Details", new { id = item.Id }) |
+            @Html.ActionLink(SchoolLC.Delete, "Delete", new { id = item.Id }) |
+            @Html.ActionLink(SchoolLC.PrintCertificate, "PrintCertificate", new { id = item.Id }, new { target = "_blank" })
+            @Html.ActionLink("Print", "PrintById", new { id = item.Id }, new { target = "_blank" })
+        </td>
+    </tr>
+}
+
+</table>
+}

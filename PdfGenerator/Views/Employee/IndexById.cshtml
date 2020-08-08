@@ -1,0 +1,56 @@
+﻿@model PdfGenerator.Models.Emp
+
+@{
+    ViewBag.Title = "IndexById";
+    Layout= null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<h2>IndexById</h2>
+
+<div>
+    <h2>Details of : @Model.name</h2>
+    <table class="table table-bordered table-condensed table-striped">
+        <tr>
+            <td>Employee Name :</td>
+            <td>@Model.name</td>
+        </tr>
+        
+    </table>
+    <table class="table table-bordered table-condensed table-striped">
+        <tr>
+            <td>
+                <table class="table table-bordered table-condensed table-striped">
+                    <tr>
+                        <td colspan="2">Details</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>@Model.name</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>@Model.gender</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>@Model.city</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>@Model.email</td>
+                    </tr>
+                    <tr>
+                        <td> Salary</td>
+                        <td>@Model.salary</td>
+                    </tr>
+                </table>
+            </td>
+           
+        </tr>
+    </table>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

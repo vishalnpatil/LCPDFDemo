@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNet.Identity
+@using System.Globalization 
+@using System.Threading; 
+@using PdfGenerator.Models.Resx
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    }
+}
+else
+{
+    @*<ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>*@
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink(SchoolLC.English, "Change", "StudentLC",  new { langabb ="en"},null)</li>
+        <li>@Html.ActionLink(SchoolLC.Marathi, "Change", "StudentLC", new { langabb = "mr" }, null)</li>
+    </ul>
+}
+
+@*<ul style="margin-top:10px;">
+    @{
+        CultureInfo currentCulture = Thread.CurrentThread.CurrentCulture;
+
+        <li><a href="/StudentLC/ChangeCurrentCulture/0">English</a></li>
+
+        <li><a href="/StudentLC/ChangeCurrentCulture/1">Hindi</a></li>
+
+        <li><a href="/StudentLC/ChangeCurrentCulture/2">Marathi</a></li>
+
+        <li><a href="/StudentLC/ChangeCurrentCulture/3">Arabic</a></li>
+    }
+</ul>*@ 
